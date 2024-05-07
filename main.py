@@ -1,16 +1,30 @@
-# This is a sample Python script.
+"""Основная логика работы приложения,
+Подсчёт ответов,
+Интерпретация результатов"""
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+answers_counter = 0     # счётчик общего числа ответов
+rejection_counter = 0     # счётчик общего отказов
 
+# Форма
+scoreW = 0; # целое изображение
+scoreD = 0; # большие части пятна
+scoreDd = 0;    # малые детали пятна
+# Цвет
+scoreFC = 0; # форма доминирует
+scoreCF = 0;    # цвет доминирует
+scoreC = 0; # цвет
+scoreF = 0; # чёткая форма
+#Кинестетические показатели
+scoreM = 0;    # движение/ искажение
+scoreMH = 0;    # человевческие кинестезии
+scoreMA = 0;    # кинестезии животных
+# Локализация
+scoreS = 0; # белый фон
+# scoreWS = 0;    #
+# scoreDdS = 0; #
+#Популярность
+scoreOrig = 0;    # оригинальные ответы
+scorePopular = 0;    # популярные ответы
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Тип переживания
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
