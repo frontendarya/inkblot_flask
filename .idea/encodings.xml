@@ -4,5 +4,8 @@
     <file url="file://$PROJECT_DIR$/data/datasets/meaning.csv" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/data/datasets/popularity.csv" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/data/datasets/test-popular.csv" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/data/results/conflict.csv" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/data/results/intelligence.csv" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/data/results/type_of_experience.csv" charset="windows-1251" />
   </component>
 </project>

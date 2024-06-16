@@ -168,9 +168,9 @@ class Main():
                     i.hide()
 
 
-    def countDeterminants(self):    #Общие показатели
-        match():
-            case:
+    # def countDeterminants(self):    #Общие показатели
+    #     match():
+    #         case:
     def countTypeOfExperience(self):    #Тип переживания
         c = (3*self.c + 2*self.scoreCF + self.scoreFC)/2
         if (self.scoreM <=1 & c<=1):
@@ -201,8 +201,8 @@ class Main():
                 self.conflict += 'изоляция'
 
 
-    def sendResults(self):  # отправить результаты
-        data= pd.read_csv('data/results/***.csv', sep=';', names=['label', 'text'], encoding='cp1251')
-        if (array or str == null)
-            'Нет дополнительной информации по детерминантам'
-            'Конфликт отсутствует'
+    # def sendResults(self):  # отправить результаты
+    #     data= pd.read_csv('data/results/***.csv', sep=';', names=['label', 'text'], encoding='cp1251')
+    #     if (array or str == null)
+    #         'Нет дополнительной информации по детерминантам'
+    #         'Конфликт отсутствует'
