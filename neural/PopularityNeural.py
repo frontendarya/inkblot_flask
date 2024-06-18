@@ -1,7 +1,7 @@
 """наивный байес, категоризация популярного ответа"""
 
 import pandas as pd
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import MultinomialNB, ComplementNB
 from sklearn.feature_extraction.text import CountVectorizer
 
 class PopularityNeural():
@@ -18,7 +18,7 @@ class PopularityNeural():
     # Преобразование текста в числовые векторы
     x_train = vectorizer.fit_transform(texts)
     # Инициализация наивного байеса
-    clf = MultinomialNB(alpha=0.1)
+    clf = ComplementNB(alpha=0.1)
     # Обучение
     clf.fit(x_train, labels)
 
