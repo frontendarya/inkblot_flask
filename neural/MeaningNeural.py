@@ -1,32 +1,40 @@
 """нейронная сеть, многоклассовая классификация содержания ответа"""
 
 import pandas as pd
-from keras.models import Sequential
-from keras.layers import Dense
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense
 from keras.src.datasets import reuters
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
+import pathlib
+from pathlib import Path
 
-class Animal():
+class Meaning():
 
     global model, x_train, y_train, x_val, y_val, vectorizer
+    # Получаем строку, содержащую путь к рабочей директории:
+    work_path = pathlib.Path.cwd()
+    # сохраним путь к csv файлу в переменной data_path
+    data_path = Path(work_path, 'data/datasets', 'meaning.csv')
+
     # Загрузка датасета
-    dataframe = pd.read_csv("data/datasets/meaning.csv", names=['text', 'label'], sep=',', header=None, nrows=2000)
+    dataframe = pd.read_csv(data_path, sep=';', header=None, nrows=1660)
     dataframe = shuffle(dataframe)
+    y_dataframe = dataframe.drop('answers')
 
     # Инициализация векторизатора
     vectorizer = CountVectorizer(binary=True)
 
     # Преобразование данных в бинарную матрицу
-    x_train = vectorizer.fit_transform(dataframe['text']).toarray().astype('float32')
-    y_train = np.asarray(dataframe['label']).astype('float32')
+    x_train = vectorizer.fit_transform(dataframe['answers']).toarray().astype('float32')
+    y_train = np.asarray(y_dataframe).astype('float32')
     # Разделение данных на тренинровочные и проверочные
-    x_val = x_train[-1000:]
-    y_val = y_train[-1000:]
-    x_train = x_train[:-1000]
-    y_train = y_train[:-1000]
+    x_val = x_train[-1600:]
+    y_val = y_train[-1600:]
+    x_train = x_train[:-1600]
+    y_train = y_train[:-1600]
 
     # Создание модели
     model = Sequential()
@@ -50,52 +58,53 @@ class Animal():
         elif result_label == [[1]]:
             return 1
 
-class Category():
-    from keras.preprocessing.text import Tokenizer
-    from keras.preprocessing.sequence import pad_sequences
-    from keras.models import Sequential
-    from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
-    from sklearn.model_selection import train_test_split
-    from keras.utils.np_utils import to_categorical
+# class Category():
+#     from preprocessing.text import Tokenizer
+#     from preprocessing.sequence import pad_sequences
+#     from tensorflow.python.keras.models import Sequential
+#     from tensorflow.python.keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
+#     from sklearn.model_selection import train_test_split
+#
+#     # Подготовка данных
+#     max_fatures = 2000
+#     tokenizer = Tokenizer(num_words=max_fatures, split=' ')
+#     tokenizer.fit_on_texts(df['Text'].values)
+#     X = tokenizer.texts_to_sequences(df['Text'].values)
+#     X = pad_sequences(X)
+#
+#     # Создание модели
+#     embed_dim = 128
+#     lstm_out = 196
+#
+#     model = Sequential()
+#     model.add(Embedding(max_fatures, embed_dim, input_length=X.shape[1]))
+#     model.add(SpatialDropout1D(0.4))
+#     model.add(LSTM(lstm_out, dropout=0.2, recurrent_dropout=0.2))
+#     model.add(Dense(2, activation='softmax'))
+#     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+#
+#     # Деление данных на обучающую и тестовую выборки
+#     Y = pd.get_dummies(df['Category']).values
+#     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.33, random_state=42)
+#
+#     # Обучение модели
+#     batch_size = 32
+#     model.fit(X_train, Y_train, epochs=7, batch_size=batch_size, verbose=2)
+#
+#     (train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=1000)
+#     # кодирование
+#     model = Sequential()
+#     model.add(Dense(64, activation='relu', input_shape=(10000,)))   #настроить входные нейроны на количество категорий
+#     model.add(Dense(64, activation='relu'))
+#     model.add(Dense(64, activation='softmax'))  #вероятность пренадлежности к классу
+#
+#     model.compile(
+#         optimizer='rmsprop',
+#         loss='categorial_crossentropy',
+#         metrics=['accuracy']
+#     )
 
-    # Подготовка данных
-    max_fatures = 2000
-    tokenizer = Tokenizer(num_words=max_fatures, split=' ')
-    tokenizer.fit_on_texts(df['Text'].values)
-    X = tokenizer.texts_to_sequences(df['Text'].values)
-    X = pad_sequences(X)
 
-    # Создание модели
-    embed_dim = 128
-    lstm_out = 196
-
-    model = Sequential()
-    model.add(Embedding(max_fatures, embed_dim, input_length=X.shape[1]))
-    model.add(SpatialDropout1D(0.4))
-    model.add(LSTM(lstm_out, dropout=0.2, recurrent_dropout=0.2))
-    model.add(Dense(2, activation='softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-    # Деление данных на обучающую и тестовую выборки
-    Y = pd.get_dummies(df['Category']).values
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.33, random_state=42)
-
-    # Обучение модели
-    batch_size = 32
-    model.fit(X_train, Y_train, epochs=7, batch_size=batch_size, verbose=2)
-
-    (train_data, train_labels), (test_data, test_labels) = reuters.load_data(num_words=1000)
-    # кодирование
-    model = Sequential()
-    model.add(Dense(64, activation='relu', input_shape=(10000,)))   #настроить входные нейроны на количество категорий
-    model.add(Dense(64, activation='relu'))
-    model.add(Dense(64, activation='softmax'))  #вероятность пренадлежности к классу
-
-    model.compile(
-        optimizer='rmsprop',
-        loss='categorial_crossentropy',
-        metrics=['accuracy']
-    )
 
     # result_dict = result.history
     # loss = result_dict['loss']
