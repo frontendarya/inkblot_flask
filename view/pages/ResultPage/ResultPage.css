@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=The+Girl+Next+Door&display=swap");
+
+.result {
+  max-width: 100%;
+  padding: 2vw;
+  box-sizing: border-box;
+}
+
+.header-result {
+  font-family: "The Girl Next Door", sans-serif;
+  text-align: center;
+  margin-bottom: 2vw;
+  margin-top: -2vw;
+}
+
+.title {
+  font-size: 5vw;
+  margin-bottom: 0.7vw;
+  margin-top: -2vw;
+}
+
+.txt_start {
+  margin-top: -1vw;
+  font-size: 1.5vw;
+}
+
+.body-result {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  gap: 2vw;
+  justify-content: center;
+}
+
+.res-block {
+  border: 0.2vw solid white;
+  border-radius: 20px;
+  padding: 2vw;
+}
+
+.category h3 {
+  margin-top: 0vw;
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+
+.txt-cat {
+  font-size: 1.2vw;
+  margin-bottom: 1vw;
+}
+
+.txt-score {
+  font-size: 1.2vw;
+}
+
+.restart-button button {
+  margin: auto auto auto auto;
+  display: block;
+  width: 25vw;
+  height: 5vw;
+  font-size: 2vw;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #ffffff;
+  border: 0.2vw solid #ffffff;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  z-index: 2;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  background: transparent;
+}
+
+.restart-button button span {
+  position: relative;
+}
+
+.restart-button button:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ffffffa0;
+  color: #000;
+  transition: all 0.35s;
+  z-index: -1;
+}
+
+.restart-button button:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.restart-button button:hover:after {
+  width: 100%;
+}

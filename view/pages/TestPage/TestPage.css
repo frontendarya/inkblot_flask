@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=The+Girl+Next+Door&display=swap");
+
+body {
+  min-width: 700px;
+  background-color: black;
+  color: white;
+  font-size: 1vw;
+  margin: 30px 40px 30px 40px;
+}
+
+.test {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.card-block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.left_side,
+.right_side {
+  width: 50%;
+  padding: 1.5vw;
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 30px;
+}
+
+.right_side {
+  min-width: 30%;
+}
+
+.left_side {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2vw;
+  min-width: 40%;
+}
+
+.left_side .img-test {
+  width: 40vw;
+  height: 40vh;
+  min-width: 80%;
+  min-height: 65%;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  border-radius: 30px;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn_test {
+  margin: auto;
+  display: block;
+  width: 15vw;
+  height: 4vw;
+  font-size: 1vw;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #ffffff;
+  border: 0.2vw solid #ffffff;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  z-index: 2;
+  background: transparent;
+  margin-top: 10px;
+  margin-right: 1vw;
+}
+
+.btn_test:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.btn_test:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ffffffa0;
+  color: #000;
+  transition: all 0.35s;
+  z-index: -1;
+}
+
+.btn_test:hover:after {
+  width: 100%;
+}
+
+.txt {
+  margin-bottom: 10px;
+}
+
+.answer {
+  margin-bottom: 10px;
+}
+
+.textArea {
+  width: 60%;
+  padding: 10px;
+  font-size: 1vw;
+}
+
+.my-radio {
+  margin-right: 10px;
+}
+
+.card {
+  font-family: "The Girl Next Door";
+  font-size: 5vw;
+  z-index: 2;
+  margin-top: -2vw;
+  margin-bottom: -2vw;
+}
